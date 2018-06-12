@@ -7,8 +7,10 @@ public class Customer
 {
 	private String firstName;
 	
-	@NotNull(message="is required")
-	@Size(min=1)
+	//Add Validation rules to have not null
+	// with a min size of 1 and custom message is required
+	@NotNull()
+	@Size(min=1, message="is required")
 	private String lastName;
 	
 	public String getFirstName()
