@@ -9,7 +9,7 @@ public class Customer
 	
 	//Add Validation rules to have not null
 	// with a min size of 1 and custom message is required
-	@NotNull()
+	@NotNull(message="is required")
 	@Size(min=1, message="is required")
 	private String lastName;
 	
