@@ -2,9 +2,12 @@ package ie.bitterCoffee.springdemo.mvc;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -13,6 +16,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/customer")
 public class CustomerController
 {
+	
+	//InitBinder is set up to Pre-process every web request coming in 
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder)
+	{
+		//String trimmer editor - used to remove leading a trailing white spaces 
+		//StringTrimmerEditor is set to true so the trimmer is able to trim the String to null
+		StringTrimmerEditor stringTimmerEditor = new StringTrimmerEditor(true);
+		
+		//Register the stringTimmerEditor as a custom editor to dataBinder(Request coming in)
+		//Set the dataBinder so it applies the stringTimmerEditor to every String class
+		dataBinder.registerCustomEditor(String.class, stringTimmerEditor);
+	}
+	
 	//Map showForm() to request /customer/showForm
 	@RequestMapping("/showForm")
 	public String showForm(Model theModel)
@@ -27,6 +44,9 @@ public class CustomerController
 	@RequestMapping("/processForm")
 	public String processForm(@Valid @ModelAttribute("customer") Customer theCustomer,BindingResult theBindingResult)
 	{
+		//System out logging for testing 
+		System.out.println("Last name :|"+theCustomer.getLastName()+"|");
+				
 		if(theBindingResult.hasErrors())
 		{
 			return "customer-form";
@@ -34,7 +54,6 @@ public class CustomerController
 		else
 		{
 			return "customer-confirmation";
-		}
-		
-	}
+		}		
+	}		
 }
