@@ -9,6 +9,6 @@
 		<br><br>
 		Free Passes ${customer.freePasses}
 		<br><br>
-		Post Code ${customer.postCode}
+		Post Code ${customer.postalCode}
 	</body>
 </html>
