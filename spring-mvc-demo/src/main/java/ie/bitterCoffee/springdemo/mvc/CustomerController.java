@@ -46,7 +46,8 @@ public class CustomerController
 	{
 		//System out logging for testing 
 		System.out.println("Last name :|"+theCustomer.getLastName()+"|");
-		System.out.println("Last name :|"+theCustomer.getFreePasses()+"|");
+		System.out.println("Free Passes :|"+theCustomer.getFreePasses()+"|");
+		System.out.println("Post Code :|"+theCustomer.getPostalCode()+"|");
 				
 		if(theBindingResult.hasErrors())
 		{
