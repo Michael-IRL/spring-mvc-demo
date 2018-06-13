@@ -5,6 +5,10 @@
 		<title>Customer Confirmation page</title>
 	</head>
 	<body>
-		The customer is confirmed: ${customer.firstName} ${customer.lastName}
+		The customer is confirmed: ${customer.firstName} ${customer.lastName} 
+		<br><br>
+		Free Passes ${customer.freePasses}
+		<br><br>
+		Post Code ${customer.postCode}
 	</body>
 </html>
