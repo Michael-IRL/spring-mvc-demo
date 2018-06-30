@@ -16,10 +16,11 @@ public class Customer
 	@Size(min=1, message="is required")
 	private String lastName;
 	
-	//Validation rule for number to be >= 0 and <=10 with a custom message for each rule 
+	//Validation rule for number to be >= 0 and <=10 with a custom message for each rule
+	@NotNull(message="is required")
 	@Min(value=0, message="must be greater than or equal to zero")
 	@Max(value=10, message="must be less than or equal to 10")
-	private int freePasses;	
+	private Integer freePasses;	
 	
 	//Validation rule for post code. Using Regular expression. 
 	@Pattern(regexp = "^[a-zA-Z0-9]{5}", message="only 5char/digits")
@@ -52,11 +53,11 @@ public class Customer
 		this.lastName = lastName;
 	}
 	
-	public int getFreePasses()
+	public Integer getFreePasses()
 	{
 		return freePasses;
 	}
-	public void setFreePasses(int freePasses)
+	public void setFreePasses(Integer freePasses)
 	{
 		this.freePasses = freePasses;
 	}
