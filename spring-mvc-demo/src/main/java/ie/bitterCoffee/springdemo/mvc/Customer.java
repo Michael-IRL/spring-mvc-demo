@@ -6,6 +6,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import ie.bitterCoffee.springdemo.mvc.validation.CourseCode;
+
 public class Customer
 {
 	private String firstName;	
@@ -24,11 +26,23 @@ public class Customer
 	
 	//Validation rule for post code. Using Regular expression. 
 	@Pattern(regexp = "^[a-zA-Z0-9]{5}", message="only 5char/digits")
-	private String postalCode;	
+	private String postalCode;
+	
+	@CourseCode(value="LUV", message="must start with LUV")
+	//@CourseCode(value="TOPS", message="must start with TOPS")
+	private String courseCode;
 	 
 	public String getPostalCode()
 	{
 		return postalCode;
+	}
+	public String getCourseCode()
+	{
+		return courseCode;
+	}
+	public void setCourseCode(String courseCode)
+	{
+		this.courseCode = courseCode;
 	}
 	public void setPostalCode(String postalCode)
 	{
